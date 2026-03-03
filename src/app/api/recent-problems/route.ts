@@ -23,9 +23,22 @@ async function fetchCodeforcesProblems(): Promise<RecentProblem[]> {
   try {
     const res = await fetch(
       `https://codeforces.com/api/user.status?handle=${CF_HANDLE}&from=1&count=20`,
-      { next: { revalidate: 300 } } // cache for 5 minutes
+      { cache: "no-store" }
     );
-    const data = await res.json();
+    const data = (await res.json()) as {
+      status: string;
+      result: Array<{
+        verdict: string;
+        creationTimeSeconds: number;
+        problem: {
+          contestId: number;
+          index: string;
+          name: string;
+          rating?: number;
+          tags: string[];
+        };
+      }>;
+    };
 
     if (data.status !== "OK") return [];
 
@@ -80,10 +93,19 @@ async function fetchLeetCodeProblems(): Promise<RecentProblem[]> {
         query,
         variables: { username: LC_USERNAME, limit: 10 },
       }),
-      next: { revalidate: 300 },
+      cache: "no-store",
     });
 
-    const data = await res.json();
+    const data = (await res.json()) as {
+      data?: {
+        recentAcSubmissionList?: Array<{
+          id: string;
+          title: string;
+          titleSlug: string;
+          timestamp: string;
+        }>;
+      };
+    };
     const submissions = data?.data?.recentAcSubmissionList;
     if (!submissions) return [];
 
