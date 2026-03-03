@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 
+function hasIntroBeenSeen(): boolean {
+  if (typeof window === "undefined") return true;
+  return !!sessionStorage.getItem("intro-seen");
+}
+
 export function ContentReveal({ children }: { children: React.ReactNode }) {
-  const [isReady, setIsReady] = useState(() => {
-    if (typeof window !== "undefined") {
-      return !!sessionStorage.getItem("intro-seen");
-    }
-    return false;
-  });
+  const [isReady, setIsReady] = useState(hasIntroBeenSeen);
+  const [shouldAnimate] = useState(() => !hasIntroBeenSeen());
 
   const checkIntro = useCallback(() => {
     if (sessionStorage.getItem("intro-seen")) {
@@ -30,6 +31,10 @@ export function ContentReveal({ children }: { children: React.ReactNode }) {
 
     return () => clearInterval(interval);
   }, [isReady, checkIntro]);
+
+  if (!shouldAnimate && isReady) {
+    return <>{children}</>;
+  }
 
   return (
     <motion.div
