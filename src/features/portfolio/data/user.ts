@@ -9,20 +9,21 @@ export const USER = {
   pronouns: "he/him",
   bio: "Building ideas, not just features.",
   flipSentences: [
-    "Building ideas, not just features.",
-    "Curious by default. Precise by choice.",
-    "Open Source Contributor",
+    "my name is Pradyuman.",
+    "I am an Engineer.",
+    "I am a Developer.",
+    "I am an Open Source Contributor.",
   ],
   address: "Himachal Pradesh, India",
   phoneNumber: "OTAxNTk1NDUwNw==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   email: "dWx0cmFnYW1pbmcxMjNxQGdtYWlsLmNvbQ==", // base64 encoded
   website: "https://github.com/Pradyuman-aviator",
-  jobTitle: "Open Source Developer",
+  jobTitle: "Executive",
   jobs: [
     {
-      title: "Open Source Developer",
-      company: "learning equality",
-      website: "https://learningequality.org/",
+      title: "Executive",
+      company: "Google Developer Group",
+      website: "https://developers.google.com/community/gdg",
     },
   ],
   //   about: `
@@ -48,8 +49,7 @@ Active Open Source Contributor, collaborating on real-world repositories, improv
 Competitive Programmer with an 1100 Codeforces rating, experienced in data structures, algorithms, and problem-solving under time constraints.
 `,
 
-  avatar:
-    "",
+  avatar: "",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
   namePronunciationUrl: "/audio/Prashantaudio.mp3",

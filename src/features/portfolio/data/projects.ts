@@ -8,11 +8,7 @@ export const PROJECTS: Project[] = [
       start: "2024",
     },
     link: "https://github.com/Pradyuman-aviator/networksecurity",
-    skills: [
-      "Network Security",
-      "Python",
-      "Machine Learning",
-    ],
+    skills: ["Network Security", "Python", "Machine Learning"],
     description: `A project focused on network security.
 - Analyzes and secures network infrastructure
 - Uses modern techniques for monitoring`,
@@ -41,62 +37,51 @@ export const PROJECTS: Project[] = [
   },
 
   {
-    id: "medivault",
-    title: "MediVault (DMEDS+)",
+    id: "stutter-clear",
+    title: "Stutter Clear",
     period: {
-      start: "02.2025",
+      start: "2025",
     },
-    link: "https://github.com/Pradyuman-aviator",
+    link: "https://github.com/Pradyuman-aviator/stuttering",
     skills: [
-      "Blockchain",
-      "Ethereum",
-      "Solidity",
-      "React",
-      "Node.js",
-      "IPFS",
-      "Pinata",
-      "Web3.js",
+      "Python",
+      "PyTorch",
+      "FastAPI",
+      "WebSocket",
+      "Deep Learning",
+      "Audio Processing",
+      "Docker",
     ],
-    description: `A decentralized medical record management system focused on privacy and secure data sharing.
-- Stores medical records on IPFS using Pinata
-- Smart contracts written in Solidity
-- Wallet-based authentication using MetaMask
-- Designed scalable frontend with React and Tailwind CSS`,
+    description: `Real-time stuttering correction system with a 3-stage ML pipeline.
+- CNN-BiLSTM-CRF model for frame-level stutter detection (repetitions, prolongations, blocks)
+- Transformer Seq2Seq + HiFi-GAN vocoder for natural fluency enhancement
+- Real-time WebSocket streaming with <200ms target latency
+- Speaker identity preservation with production-ready deployment`,
+    isExpanded: true,
   },
 
   {
-    id: "decentralized-fir",
-    title: "Decentralized FIR Management System",
+    id: "helix-vault",
+    title: "HelixVault - Genomic Data NFT Platform",
     period: {
-      start: "04.2025",
+      start: "2025",
     },
     link: "https://github.com/Pradyuman-aviator",
     skills: [
-      "Blockchain",
-      "Ethereum",
       "Solidity",
-      "React",
-      "Node.js",
+      "Blockchain",
+      "Python",
+      "FastAPI",
       "IPFS",
-      "Web3",
+      "Polygon",
+      "AI",
+      "Cryptography",
     ],
-    description: `A decentralized system for filing and tracking FIRs with separate user and police interfaces.
-- Ensures transparency and immutability using blockchain
-- Supports role-based access for civilians and police
-- Stores FIR data securely using IPFS`,
-  },
-
-
-  {
-    id: "academic-projects",
-    title: "CP-31: Academic & Practice Projects",
-    period: {
-      start: "2024",
-    },
-    link: "https://github.com/Pradyuman-aviator/cp-31",
-    skills: ["C++", "Data Structures", "Algorithms", "OOP", "Problem Solving"],
-    description: `A collection of academic and practice projects built as part of coursework and self-learning.
-- Implemented core data structures and algorithms in C++
-- Solved competitive programming problems on Codeforces and LeetCode`,
+    description: `Privacy-preserving genomic data monetization — turn your DNA into an NFT.
+- Upload & encrypt genetic data (23andMe, Ancestry, VCF) with AES-256-GCM
+- Mint ERC-721 NFTs on Polygon representing data ownership
+- AI agent analyzes traits (eye color, lactose tolerance, muscle type) without exposing raw DNA
+- Research bounty marketplace with ZK proof-based query responses`,
+    isExpanded: true,
   },
 ];

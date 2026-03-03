@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+
+import { ElectricBorder } from "@/components/ui/electric-border";
 import { USER } from "@/features/portfolio/data/user";
 import { FlipSentences } from "@/registry/flip-sentences";
 import {
@@ -9,19 +14,31 @@ import { PronounceMyName } from "./pronounce-my-name";
 import { VerifiedIcon } from "./verified-icon";
 
 export function ProfileHeader() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="screen-line-after flex border-x border-edge">
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-0.75 p-1">
-          <TestimonialAvatar className="size-32 sm:size-40">
-            <img
-              className="size-full rounded-full select-none object-cover"
-              alt={`${USER.displayName}'s avatar`}
-              src={USER.avatar}
-              fetchPriority="high"
-            />
-            <TestimonialAvatarRing className="ring-blue-500 dark:ring-blue-400" />
-          </TestimonialAvatar>
+          <ElectricBorder
+            color="#3b82f6"
+            speed={1.2}
+            chaos={0.15}
+            borderRadius={9999}
+            active={isHovered}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <TestimonialAvatar className="size-32 sm:size-40">
+              <img
+                className="size-full rounded-full object-cover select-none"
+                alt={`${USER.displayName}'s avatar`}
+                src={USER.avatar}
+                fetchPriority="high"
+              />
+              <TestimonialAvatarRing className="ring-blue-500 dark:ring-blue-400" />
+            </TestimonialAvatar>
+          </ElectricBorder>
         </div>
 
         <a

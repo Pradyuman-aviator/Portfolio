@@ -3,16 +3,15 @@ import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 import { About } from "@/features/portfolio/components/about";
 import { Awards } from "@/features/portfolio/components/awards";
 import { EngineerVow } from "@/features/portfolio/components/engineer-vow";
-
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
 import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
+import { RecentProblems } from "@/features/portfolio/components/recent-problems";
 import { SocialLinks } from "@/features/portfolio/components/social-links";
 import { TeckStack } from "@/features/portfolio/components/teck-stack";
-import { TestimonialsMarquee } from "@/features/portfolio/components/testimonials-marquee";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
@@ -53,6 +52,9 @@ export default function Page() {
         <Separator />
 
         <Awards />
+        <Separator />
+
+        <RecentProblems />
         <Separator />
 
         <EngineerVow />

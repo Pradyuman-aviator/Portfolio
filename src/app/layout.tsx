@@ -7,6 +7,7 @@ import type { WebSite, WithContext } from "schema-dts";
 
 import { CinematicIntro } from "@/components/cinematic-intro";
 import { ConsentManager } from "@/components/consent-manager";
+import { ContentReveal } from "@/components/content-reveal";
 import { Providers } from "@/components/providers";
 import { HoverDotBackground } from "@/components/ui/hover-dot-background";
 import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
@@ -135,13 +136,15 @@ export default function RootLayout({
 
       <body suppressHydrationWarning>
         <CinematicIntro />
-        <HoverDotBackground containerClassName="min-h-screen">
-          <Providers>
-            <NuqsAdapter>
-              <ConsentManager>{children}</ConsentManager>
-            </NuqsAdapter>
-          </Providers>
-        </HoverDotBackground>
+        <ContentReveal>
+          <HoverDotBackground containerClassName="min-h-screen">
+            <Providers>
+              <NuqsAdapter>
+                <ConsentManager>{children}</ConsentManager>
+              </NuqsAdapter>
+            </Providers>
+          </HoverDotBackground>
+        </ContentReveal>
       </body>
     </html>
   );
