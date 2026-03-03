@@ -101,7 +101,10 @@ export function RecentProblems() {
     async function fetchProblems() {
       try {
         const res = await fetch("/api/recent-problems");
-        const data = await res.json();
+        const data = (await res.json()) as {
+          leetcode?: RecentProblem[];
+          codeforces?: RecentProblem[];
+        };
         setLeetcode(data.leetcode || []);
         setCodeforces(data.codeforces || []);
       } catch {
