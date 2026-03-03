@@ -15,7 +15,7 @@ export const USER = {
     "I am an Open Source Contributor.",
   ],
   address: "Himachal Pradesh, India",
-  phoneNumber: "OTAxNTk1NDUwNw==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
+  phoneNumber: "ODU4MDU1NjcwMg==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   email: "dWx0cmFnYW1pbmcxMjNxQGdtYWlsLmNvbQ==", // base64 encoded
   website: "https://github.com/Pradyuman-aviator",
   jobTitle: "Executive",

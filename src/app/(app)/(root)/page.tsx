@@ -5,6 +5,7 @@ import { Awards } from "@/features/portfolio/components/awards";
 import { EngineerVow } from "@/features/portfolio/components/engineer-vow";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
+import { LastPlayed } from "@/features/portfolio/components/last-played";
 import { Overview } from "@/features/portfolio/components/overview";
 import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
@@ -55,6 +56,9 @@ export default function Page() {
         <Separator />
 
         <RecentProblems />
+        <Separator />
+
+        <LastPlayed />
         <Separator />
 
         <EngineerVow />
