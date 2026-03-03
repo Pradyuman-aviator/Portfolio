@@ -49,10 +49,10 @@ Active Open Source Contributor, collaborating on real-world repositories, improv
 Competitive Programmer with an 1100 Codeforces rating, experienced in data structures, algorithms, and problem-solving under time constraints.
 `,
 
-  avatar: "",
+  avatar: "/images/avatar.jpg",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
-  namePronunciationUrl: "/audio/Prashantaudio.mp3",
+  namePronunciationUrl: "/audio/Pradyumanaudio.mp3",
   timeZone: "Asia/Kolkata",
   keywords: [
     "pradyuman sharma",
