@@ -17,12 +17,12 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1767166081/icons8-codeforces-100_epat0q.png",
     title: "Codeforces",
     description: "Aviator_Pradyuman",
-    href: "https://codeforces.com/profile/Aviator_Pradyuman",
+    href: "#",
   },
   {
     icon: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1767166219/icons8-leetcode-48_oj6sum.png",
     title: "LeetCode",
     description: "plnq4dc0nx",
-    href: "https://leetcode.com/u/plnq4dc0nx/",
+    href: "#",
   },
 ];

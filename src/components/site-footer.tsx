@@ -1,9 +1,4 @@
-import { RssIcon } from "lucide-react";
-import Link from "next/link";
-
-import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site";
-
-import { Icons } from "./icons";
+import { SOURCE_CODE_GITHUB_URL } from "@/config/site";
 
 export function SiteFooter() {
   return (
@@ -23,12 +18,7 @@ export function SiteFooter() {
 
         <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
           Designed & developed by{" "}
-          <a
-            className="link"
-            href="https://x.com/2730Thakur12618"
-            target="_blank"
-            rel="noopener"
-          >
+          <a className="link" href="#" target="_blank" rel="noopener">
             Pradyuman Sharma
           </a>
           . The source code is available on{" "}
@@ -48,8 +38,4 @@ export function SiteFooter() {
       </div>
     </footer>
   );
-}
-
-function Separator() {
-  return <div className="flex h-11 w-px bg-edge" />;
 }

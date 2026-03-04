@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@iamncdai", // Twitter username
+    creator: "@2730Thakur12618",
     images: [SITE_INFO.ogImage],
   },
   icons: {
