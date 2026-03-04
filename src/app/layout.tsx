@@ -82,17 +82,17 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1767192029/Screenshot_2025-12-31_200306_r6v3zw.png",
+        url: "/images/avatar.jpg",
         sizes: "any",
       },
       {
-        url: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1767192029/Screenshot_2025-12-31_200306_r6v3zw.png",
-        type: "image/svg+xml",
+        url: "/images/avatar.jpg",
+        type: "image/jpeg",
       },
     ],
     apple: {
-      url: "https://assets.chanhdai.com/images/apple-touch-icon.png",
-      type: "image/png",
+      url: "/images/avatar.jpg",
+      type: "image/jpeg",
       sizes: "180x180",
     },
   },
