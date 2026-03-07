@@ -1,5 +1,6 @@
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
+import { SectionReveal } from "@/components/section-reveal";
 import { About } from "@/features/portfolio/components/about";
 import { Awards } from "@/features/portfolio/components/awards";
 import { EngineerVow } from "@/features/portfolio/components/engineer-vow";
@@ -11,6 +12,7 @@ import { ProfileCover } from "@/features/portfolio/components/profile-cover";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
 import { RecentProblems } from "@/features/portfolio/components/recent-problems";
+import { SectionJumpNav } from "@/features/portfolio/components/section-jump-nav";
 import { SocialLinks } from "@/features/portfolio/components/social-links";
 import { TeckStack } from "@/features/portfolio/components/teck-stack";
 import { USER } from "@/features/portfolio/data/user";
@@ -28,40 +30,67 @@ export default function Page() {
 
       <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileCover />
-        <ProfileHeader />
+
+        <SectionReveal delay={0.05}>
+          <ProfileHeader />
+        </SectionReveal>
+
+        <SectionJumpNav />
         <Separator />
 
-        <Overview />
+        <SectionReveal>
+          <Overview />
+        </SectionReveal>
         <Separator />
 
-        <SocialLinks />
+        <SectionReveal>
+          <SocialLinks />
+        </SectionReveal>
         <Separator />
 
-        <About />
+        <SectionReveal>
+          <About />
+        </SectionReveal>
         <Separator />
 
-        <GitHubContributions />
+        <SectionReveal>
+          <GitHubContributions />
+        </SectionReveal>
         <Separator />
 
-        <TeckStack />
+        <SectionReveal>
+          <TeckStack />
+        </SectionReveal>
         <Separator />
 
-        <Experiences />
+        <SectionReveal>
+          <Experiences />
+        </SectionReveal>
         <Separator />
 
-        <Projects />
+        <SectionReveal>
+          <Projects />
+        </SectionReveal>
         <Separator />
 
-        <Awards />
+        <SectionReveal>
+          <Awards />
+        </SectionReveal>
         <Separator />
 
-        <RecentProblems />
+        <SectionReveal>
+          <RecentProblems />
+        </SectionReveal>
         <Separator />
 
-        <LastPlayed />
+        <SectionReveal>
+          <LastPlayed />
+        </SectionReveal>
         <Separator />
 
-        <EngineerVow />
+        <SectionReveal>
+          <EngineerVow />
+        </SectionReveal>
         <Separator />
       </div>
     </>

@@ -122,17 +122,26 @@
 }
 
 @utility bg-dot-white {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.4) 1px,
+    transparent 1px
+  );
   background-size: 24px 24px;
 }
 
 @utility bg-dot-thick-indigo-500 {
-  background-image: radial-gradient(var(--color-indigo-500) 2px, transparent 2px);
+  background-image: radial-gradient(
+    var(--color-indigo-500) 2px,
+    transparent 2px
+  );
   background-size: 24px 24px;
 }
 
 @utility bg-dot-thick-white {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.6) 2px, transparent 2px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.6) 2px,
+    transparent 2px
+  );
   background-size: 24px 24px;
 }
 
@@ -338,6 +347,7 @@
     @apply bg-background font-sans text-foreground antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   /* Custom scrollbar styling. Thanks @shadcn-ui */
@@ -410,6 +420,16 @@
       clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
     }
   } */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer components {

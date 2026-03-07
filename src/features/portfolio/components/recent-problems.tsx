@@ -54,14 +54,14 @@ function ProblemItem({ problem }: { problem: RecentProblem }) {
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="truncate text-sm font-medium transition-colors group-hover:text-blue-400">
+        <span className="truncate text-sm font-medium transition-colors group-hover:text-foreground">
           {problem.title}
         </span>
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+        <div className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
           <span>{problem.date}</span>
           {problem.tags && problem.tags.length > 0 && (
             <>
-              <span>·</span>
+              <span>/</span>
               <span className="truncate">
                 {problem.tags.slice(0, 2).join(", ")}
               </span>
@@ -92,6 +92,49 @@ function SkeletonItem() {
   );
 }
 
+function PlatformColumn({
+  platform,
+  loading,
+  items,
+}: {
+  platform: keyof typeof platformConfig;
+  loading: boolean;
+  items: RecentProblem[];
+}) {
+  const config = platformConfig[platform];
+
+  return (
+    <div>
+      <div className="flex items-center gap-2 border-b border-edge bg-muted/30 px-4 py-2">
+        <img
+          src={config.icon}
+          alt={config.label}
+          className="size-4 object-contain"
+        />
+        <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+          {config.label}
+        </span>
+      </div>
+
+      {loading ? (
+        <>
+          <SkeletonItem />
+          <SkeletonItem />
+          <SkeletonItem />
+        </>
+      ) : items.length > 0 ? (
+        items.map((problem) => (
+          <ProblemItem key={problem.id} problem={problem} />
+        ))
+      ) : (
+        <div className="px-4 py-6 text-center text-xs text-muted-foreground">
+          No recent submissions
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function RecentProblems() {
   const [leetcode, setLeetcode] = useState<RecentProblem[]>([]);
   const [codeforces, setCodeforces] = useState<RecentProblem[]>([]);
@@ -108,7 +151,7 @@ export function RecentProblems() {
         setLeetcode(data.leetcode || []);
         setCodeforces(data.codeforces || []);
       } catch {
-        // Silently fail — section just won't show data
+        // Silently fail - section just won't show data.
       } finally {
         setLoading(false);
       }
@@ -123,76 +166,31 @@ export function RecentProblems() {
     <Panel id="recent-problems">
       <PanelHeader>
         <PanelTitle>
-          Recent Problems Solved
-          {!loading && <PanelTitleSup>({totalCount})</PanelTitleSup>}
-          <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
-            <span className="relative flex size-1.5">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
+          <span className="flex flex-wrap items-center gap-2">
+            Recent Problems Solved
+            {!loading && <PanelTitleSup>({totalCount})</PanelTitleSup>}
+            <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
+              </span>
+              Live
             </span>
-            Live
           </span>
         </PanelTitle>
       </PanelHeader>
 
-      <div className="grid grid-cols-1 divide-x divide-edge sm:grid-cols-2">
-        {/* LeetCode Column */}
-        <div>
-          <div className="flex items-center gap-2 border-b border-edge bg-muted/30 px-4 py-2">
-            <img
-              src={platformConfig.leetcode.icon}
-              alt="LeetCode"
-              className="size-4 object-contain"
-            />
-            <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-              LeetCode
-            </span>
-          </div>
-          {loading ? (
-            <>
-              <SkeletonItem />
-              <SkeletonItem />
-              <SkeletonItem />
-            </>
-          ) : leetcode.length > 0 ? (
-            leetcode.map((problem) => (
-              <ProblemItem key={problem.id} problem={problem} />
-            ))
-          ) : (
-            <div className="px-4 py-6 text-center text-xs text-muted-foreground">
-              No recent submissions
-            </div>
-          )}
-        </div>
-
-        {/* Codeforces Column */}
-        <div>
-          <div className="flex items-center gap-2 border-b border-edge bg-muted/30 px-4 py-2">
-            <img
-              src={platformConfig.codeforces.icon}
-              alt="Codeforces"
-              className="size-4 object-contain"
-            />
-            <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-              Codeforces
-            </span>
-          </div>
-          {loading ? (
-            <>
-              <SkeletonItem />
-              <SkeletonItem />
-              <SkeletonItem />
-            </>
-          ) : codeforces.length > 0 ? (
-            codeforces.map((problem) => (
-              <ProblemItem key={problem.id} problem={problem} />
-            ))
-          ) : (
-            <div className="px-4 py-6 text-center text-xs text-muted-foreground">
-              No recent submissions
-            </div>
-          )}
-        </div>
+      <div className="grid grid-cols-1 divide-y divide-edge sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+        <PlatformColumn
+          platform="leetcode"
+          loading={loading}
+          items={leetcode}
+        />
+        <PlatformColumn
+          platform="codeforces"
+          loading={loading}
+          items={codeforces}
+        />
       </div>
     </Panel>
   );

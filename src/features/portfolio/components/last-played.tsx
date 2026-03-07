@@ -1,5 +1,6 @@
 "use client";
 
+import { Music2Icon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
@@ -49,7 +50,7 @@ function VinylDisc({
   isSpinning: boolean;
 }) {
   return (
-    <div className="relative size-20 shrink-0">
+    <div className="relative size-18 shrink-0 sm:size-20">
       <div
         className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 shadow-lg"
         style={{
@@ -103,7 +104,7 @@ function ProgressBar({ progress }: { progress: number }) {
 function SkeletonLastPlayed() {
   return (
     <div className="flex animate-pulse items-center gap-4 p-4">
-      <div className="size-20 rounded-full bg-muted/50" />
+      <div className="size-18 rounded-full bg-muted/50 sm:size-20" />
       <div className="flex flex-1 flex-col gap-2">
         <div className="h-5 w-3/4 rounded bg-muted/50" />
         <div className="h-4 w-1/2 rounded bg-muted/30" />
@@ -127,7 +128,7 @@ export function LastPlayed() {
         const data = (await res.json()) as { track: TrackData | null };
         setTrack(data.track);
       } catch {
-        // Silently fail
+        // Silently fail.
       } finally {
         setLoading(false);
       }
@@ -167,7 +168,6 @@ export function LastPlayed() {
     }
   }, [track?.previewUrl, isPlaying]);
 
-  // Cleanup audio on unmount
   useEffect(() => {
     return () => {
       if (audioRef.current) {
@@ -181,7 +181,7 @@ export function LastPlayed() {
     <Panel id="last-played">
       <PanelHeader>
         <PanelTitle>
-          <span className="flex items-center gap-2">
+          <span className="flex flex-wrap items-center gap-2">
             Last Played
             {track?.isNowPlaying && (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
@@ -218,7 +218,7 @@ export function LastPlayed() {
           <SkeletonLastPlayed />
         ) : track ? (
           <div className="p-4">
-            <div className="flex items-center gap-4">
+            <div className="flex items-start gap-4">
               <VinylDisc
                 image={track.image}
                 isSpinning={isPlaying || track.isNowPlaying}
@@ -243,17 +243,16 @@ export function LastPlayed() {
                 )}
               </div>
 
-              {/* Play / Pause button */}
               {track.previewUrl ? (
                 <button
                   onClick={togglePlay}
-                  className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-green-500 text-white shadow-lg shadow-green-500/25 transition-all hover:scale-110 hover:shadow-green-500/40 active:scale-95"
+                  className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-green-500 text-white shadow-lg shadow-green-500/25 transition-all duration-200 hover:scale-105 hover:shadow-green-500/40 active:scale-95"
                   aria-label={isPlaying ? "Pause preview" : "Play 30s preview"}
                   title={isPlaying ? "Pause preview" : "Play 30-second preview"}
                 >
                   {isPlaying ? (
                     <svg
-                      className="size-5"
+                      className="size-4.5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -261,7 +260,7 @@ export function LastPlayed() {
                     </svg>
                   ) : (
                     <svg
-                      className="ml-0.5 size-5"
+                      className="ml-0.5 size-4.5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -274,11 +273,11 @@ export function LastPlayed() {
                   href={track.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex size-12 shrink-0 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-500/25 transition-all hover:scale-110 hover:shadow-green-500/40"
+                  className="flex size-10 shrink-0 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-500/25 transition-all duration-200 hover:scale-105 hover:shadow-green-500/40"
                   title="Listen on Last.fm"
                 >
                   <svg
-                    className="ml-0.5 size-5"
+                    className="ml-0.5 size-4.5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -288,7 +287,6 @@ export function LastPlayed() {
               )}
             </div>
 
-            {/* Progress bar - only visible when playing */}
             {track.previewUrl && (isPlaying || progress > 0) && (
               <ProgressBar progress={progress} />
             )}
@@ -300,8 +298,9 @@ export function LastPlayed() {
             )}
           </div>
         ) : (
-          <div className="p-6 text-center text-sm text-muted-foreground">
-            No recent tracks found. Start listening! 🎧
+          <div className="flex flex-col items-center justify-center gap-2 p-6 text-center text-sm text-muted-foreground">
+            <Music2Icon className="size-4" aria-hidden />
+            <p>No recent tracks found. Start listening.</p>
           </div>
         )}
       </div>
