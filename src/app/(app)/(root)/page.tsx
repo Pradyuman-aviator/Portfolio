@@ -1,6 +1,5 @@
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
-import { SectionReveal } from "@/components/section-reveal";
 import { About } from "@/features/portfolio/components/about";
 import { Awards } from "@/features/portfolio/components/awards";
 import { EngineerVow } from "@/features/portfolio/components/engineer-vow";
@@ -30,67 +29,42 @@ export default function Page() {
 
       <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileCover />
-
-        <SectionReveal delay={0.05}>
-          <ProfileHeader />
-        </SectionReveal>
+        <ProfileHeader />
 
         <SectionJumpNav />
         <Separator />
 
-        <SectionReveal>
-          <Overview />
-        </SectionReveal>
+        <Overview />
         <Separator />
 
-        <SectionReveal>
-          <SocialLinks />
-        </SectionReveal>
+        <SocialLinks />
         <Separator />
 
-        <SectionReveal>
-          <About />
-        </SectionReveal>
+        <About />
         <Separator />
 
-        <SectionReveal>
-          <GitHubContributions />
-        </SectionReveal>
+        <GitHubContributions />
         <Separator />
 
-        <SectionReveal>
-          <TeckStack />
-        </SectionReveal>
+        <TeckStack />
         <Separator />
 
-        <SectionReveal>
-          <Experiences />
-        </SectionReveal>
+        <Experiences />
         <Separator />
 
-        <SectionReveal>
-          <Projects />
-        </SectionReveal>
+        <Projects />
         <Separator />
 
-        <SectionReveal>
-          <Awards />
-        </SectionReveal>
+        <Awards />
         <Separator />
 
-        <SectionReveal>
-          <RecentProblems />
-        </SectionReveal>
+        <RecentProblems />
         <Separator />
 
-        <SectionReveal>
-          <LastPlayed />
-        </SectionReveal>
+        <LastPlayed />
         <Separator />
 
-        <SectionReveal>
-          <EngineerVow />
-        </SectionReveal>
+        <EngineerVow />
         <Separator />
       </div>
     </>
